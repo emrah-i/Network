@@ -77,6 +77,13 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': dj_database_url.config(default=os.environ.get("REDIS_URL")),
+    }
+}
+
 AUTH_USER_MODEL = "network.User"
 
 # Password validation
