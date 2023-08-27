@@ -3,8 +3,8 @@ import environ
 import os
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-env = environ.Env()
-environ.Env.read_env()
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
