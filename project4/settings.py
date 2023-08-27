@@ -88,7 +88,7 @@ LOGGING = {
     },
 }
 
-AUTH_USER_MODEL = "network.User"
+AUTH_USER_MODEL = "project4.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -128,4 +128,4 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'network/static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'network/static/network/images')
