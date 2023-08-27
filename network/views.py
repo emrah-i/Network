@@ -524,7 +524,7 @@ def edit_comment(request, comment_id):
     if request.method == "PUT":
 
         data = json.loads(request.body)
-        if data.get("text") is not None and data["text"] is not "[DELETED]":
+        if data.get("text") != None and data["text"] != "[DELETED]":
             comment.text = data["text"]
         comment.upload_time = str(timezone.now())
         comment.save()

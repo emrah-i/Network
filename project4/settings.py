@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'network.urls'
+ROOT_URLCONF = 'project4.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'network.wsgi.application'
+WSGI_APPLICATION = 'project4.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -78,15 +78,15 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': dj_database_url.config(default=os.environ.get("REDIS_URL")),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'redis_cache.RedisCache',
+#         'LOCATION': dj_database_url.config(default=os.environ.get("REDIS_URL")),
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 AUTH_USER_MODEL = "network.User"
 
@@ -128,6 +128,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/Users/emrakh/Network/network/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'Network/network/static')
 
-MEDIA_ROOT = '/Users/emrakh/CS50W/network/network/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Network/network/static')
