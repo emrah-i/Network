@@ -128,6 +128,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'Network/network/static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/network/static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Network/network/static')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/network/static')
