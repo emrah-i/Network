@@ -73,20 +73,11 @@ WSGI_APPLICATION = 'project4.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'PORT': os.environ.get("DATABASE_URL")
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': dj_database_url.config(default=os.environ.get("REDIS_URL")),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
+    'default': dj_database_url.parse(os.environ.get("REDIS_URL"))
 }
 
 AUTH_USER_MODEL = "network.User"
