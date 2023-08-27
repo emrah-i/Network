@@ -127,4 +127,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/Users/emrakh/Network/network/static'
+
 MEDIA_ROOT = '/Users/emrakh/CS50W/network/network/static/'
