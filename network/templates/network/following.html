@@ -1,0 +1,38 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="container-fluid" id="following_users">
+        <div id="table">
+            <table>
+                <thead>
+                    <th>User</th>
+                    <th id="left-border">Unfollow</th>
+                </thead>
+                {% for user in following_users %}
+                <tr>
+                    <td id="col"><a href="{% url 'account' user.username %}" id="following_user_link">{{ user.username }}</a></td>
+                    <td id="col"><button class="btn" id="unfollow_button" data-userid="{{ user.id }}">Unfollow</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="container-fluid" id="following-main-div">
+        <div class="row" id="main_filters">
+            <div class="col"><h3>Following Posts</h3></div>
+            <div class="col" id="row1">
+                <label style="display:inline">Sort By:</label>
+                <select id="sort">
+                    <option selected value="new_old">Newest to Oldest</option>
+                    <option value="old_new">Oldest to Newest</option>
+                    <option value="most_likes">Most Likes</option>
+                    <option value="least_likes">Least Likes</option>
+                    <option value="most_comments">Most Comments</option>
+                    <option value="least_comments">Least Comments</option>
+                </select>
+            </div>
+        </div>
+        <div class="container-fluid all_posts following_posts">
+        </div>
+    </div>
+{% endblock %}

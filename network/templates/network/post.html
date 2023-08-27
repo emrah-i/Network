@@ -1,0 +1,93 @@
+{% extends 'network/layout.html' %}
+
+{% block body %}
+    <div id="post_page_{{ post.id }}" data-postid="{{ post.id }}" class="post_page">
+        <table>
+            <tr>
+                <td id="pp_category" style="color:lightgray">
+                    <p>Posted to {{ post.category }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td id="pp_title">
+                    <h3>{{ post.title }}</h3>
+                </td>
+            </tr>
+            <tr>
+                <td id="pp_text">
+                    <p>{{ post.text }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if user.is_authenticated %}
+                    <p id="pp_ut">Posted at {{ post.upload_time }} by <a href="{% url 'account' post.username %}" id="user_page_route">{{ post.username }}</a></p>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if user.is_authenticated %}
+                        {% if post.likes != None %}
+                        <button class="btn" class="btn" id="like_button" data-postid="{{ post.id }}"><i class="fa fa-solid fa-heart" style="color: #ff0000;"></i>&nbsp <span id="like_count">{{ post.likes }}</span></button>
+                        {% else %}
+                        <button class="btn" class="btn" id="like_button" data-postid="{{ post.id }}"><i class="fa fa-solid fa-heart" style="color: #ff0000;"></i>&nbsp <span id="like_count">0</span></button>
+                        {% endif %}
+                        {% if user.id == post.user %}
+                        <button class="btn" class="btn" id="pp_edit_button" data-id="{{ post.id }}">Edit</button>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if user.is_authenticated %}
+                    <form action="/post/{{ post.id }}" method="post">
+                        {% csrf_token %}
+                        <input disabled value="{{ user.username }}" id="user_input">
+                        <textarea id="comment_text" name="comment_text" placeholder="Enter Comment" required maxlength="250"></textarea><br>
+                        <button class="btn" class="btn" type="submit">Post</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if user.is_anonymous %}
+                    <p id="anon_ut">Posted at {{ post.upload_time }} by <span id="user_page_route" data-username="{{ post.username }}">{{ post.username }}</span></p>
+                    {% endif %}
+                    {% if user.is_anonymous %}
+                    <p id="anon_likes">{{ post.likes }} Likes</p>
+                    {% endif %}
+                    {% if post.comments == 0 %}
+                    <p>No Comments</p>
+                    {% else %}
+                    <p id="comment_count">{{ post.comments }} Comments</>
+                    {% for comment in comments %}
+                    <div class="post_comments">
+                        <div id="comment{{ comment.comment }}" class="post_comment_body">
+                            <h5><a href="{% url 'account' post.username %}" id="user_page_route" data-username="{{ post.username }}">{{ post.username }}</a></h5>
+                            <hr>
+                            <p>{{ comment.text }}</p>
+                            <p id="pp_ut">{{ comment.upload_time }}</p>
+                            {% if user.is_authenticated and comment.text != '[DELETED]' %}
+                                <button class="btn" type="button" id="reply_button" data-commentid="{{ comment.comment }}">Reply</button>
+                            {% if user == comment.user and comment.text != '[DELETED]' %}
+                                <button class="btn" id="edit_comment" data-commentid="{{ comment.comment }}">Edit</button>
+                            {% endif %}
+                            {% if user == comment.user and comment.text != '[DELETED]' %}
+                                <button class="btn" id="delete_comment" data-commentid="{{ comment.comment }}">Delete</button>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                        {% with comment.replies.all as replies %}
+                            {% include 'network/reply.html' with level=level replies=replies %}
+                        {% endwith %}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

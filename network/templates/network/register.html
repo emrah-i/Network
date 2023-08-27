@@ -1,0 +1,21 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <div id="register_page">
+        <h1>Register</h1>
+        {% if message %}
+            <div style="color: black">{{ message }}</div>
+        {% endif %}
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <input autofocus type="text" name="username" placeholder="Username" required><br>
+            <input type="email" name="email" placeholder="Email Address" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="password" name="confirmation" placeholder="Confirm Password" required><br>
+            <button class="btn" type="submit" class="btn">Register</button>
+        </form><br>
+        <p>Already have an account? <a href="{% url 'login' %}">Log In here.</a></p>
+    </div>
+
+{% endblock %}

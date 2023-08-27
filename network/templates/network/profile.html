@@ -1,0 +1,121 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="dialog_backdrop"></div>
+    <div id="following_users_popup" style="display:none">
+        <dialog open> 
+            <div class="popup_heading">
+                <h2>Following:</h2> 
+                <button class="btn" type="button" id="close_following"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>  
+            </div>                            
+            <div id="following_content">
+                <table>
+                    <thead>
+                        <th>Username</th>
+                        {% if user.username == user_info.username %}
+                        <th id="left-border">Unfollow</th>
+                        {% endif %}
+                    </thead>
+                    {% if following_users|length > 0 %}
+                        {% for dif_user in following_users %}
+                        <tr>
+                            <td id="col"><a href="{% url 'account' dif_user.username %}" id="profile_user_link">{{ dif_user.username }}</a></td>
+                            {% if user.username == user_info.username %}
+                            <td id="col"><button class="btn" id="unfollow_button" data-userid="{{ dif_user.id }}">Unfollow</button></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="2">No Following</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </dialog>
+    </div>
+    <div id="followers_user_popup" style="display:none">
+        <dialog open>  
+            <div class="popup_heading">
+                <h2>Followers:</h2> 
+                <button class="btn" type="button" id="close_followers"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>  
+            </div>           
+            <div id="follower_content">
+                <table>
+                    <thead>
+                        <th>Username</th>
+                        {% if user.username == user_info.username %}
+                        <th id="left-border">Remove</th>
+                        {% endif %}
+                    </thead>
+                    {% if follower_users|length > 0 %}
+                        {% for dif_user in follower_users %}
+                        <tr>
+                            <td class="column"><a href="{% url 'account' dif_user.username %}" id="profile_user_link">{{ dif_user.username }}</a></td>
+                            {% if user.username == user_info.username %}
+                            <td class="column"><button class="btn" id="remove_follower_button" data-userid="{{ dif_user.id }}">Remove</button></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="2">No Followers</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </dialog>
+    </div>
+    <div class="container-fluid" id="profile_posts">
+        <div class="row" id="user_info">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-6">
+                <img src="{% static user_info.avatar %}" alt="My Image"></img>
+            </div>
+            <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 col-6">
+                <div>
+                    <h3>{{ user_info.username }}</h3>
+                    <p><span id="open_followers">Followers: {{ user_info.followers }}</span></p>
+                    <p><span id="open_following">Following: {{ user_info.following }}</span></p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <h3>Bio:</h3>
+                {{ user_info.bio }}
+            </div>
+            <div class="col-12">
+                <div class="profile_buttons">
+                    {% if user.is_authenticated and user.username != user_info.username %}
+                        {% if current_user_following == True %}
+                            <button class="btn" id="unfollow_button" data-userid="{{ user_info.id }}">Unfollow</button>
+                        {% elif current_user_following == False %}
+                            <button class="btn" id="follow_button" data-userid="{{ user_info.id }}">Follow</button>
+                        {% endif %}
+                    {% endif %}
+                    {% if user.is_authenticated and user.username == user_info.username %}
+                            <button class="btn" type="button" id="edit_profile_button">Edit Profile</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row" id="main_filters">
+            <div class="col"><h3>All Posts</h3></div>
+            <div class="col" id="row1">
+                <label style="display:inline">Sort By:</label>
+                <select id="sort">
+                    <option selected value="new_old">Newest to Oldest</option>
+                    <option value="old_new">Oldest to Newest</option>
+                    <option value="most_likes">Most Likes</option>
+                    <option value="least_likes">Least Likes</option>
+                    <option value="most_comments">Most Comments</option>
+                    <option value="least_comments">Least Comments</option>
+                </select>
+            </div>
+        </div>
+        <div class="container-fluid all_posts profile_posts justify-content-center">
+        </div>
+        <div id="load_more">
+            <button class="btn" id="load_more_button">Load More</button>
+        </div>
+    </div>
+{% endblock %}

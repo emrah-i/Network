@@ -1,0 +1,24 @@
+
+{% for reply in replies %}
+    <div class="post_replies">
+        <hr class="reply_hr">
+        <div id="comment{{ reply.comment }}" class="post_comment_body">
+            <h5><a href="{% url 'account' reply.user %}" id="user_page_route">{{ reply.user }}</a></h5>
+            <hr>
+            <p>{{ reply.text }}</p>
+            <p id="pp_ut">{{ reply.upload_time }}</p>
+            {% if user.is_authenticated and reply.text != '[DELETED]' %}
+                <button class="btn" type="button" id="reply_button" data-commentid="{{ reply.comment }}">Reply</button>
+            {% if user == reply.user and reply.text != '[DELETED]' %}
+                <button class="btn" id="edit_comment" data-commentid="{{ reply.comment }}">Edit</button>
+            {% endif %}
+            {% if user == reply.user and reply.text != '[DELETED]' %}
+                <button class="btn" id="delete_comment" data-commentid="{{ reply.comment }}">Delete</button>
+            {% endif %}
+            {% endif %}
+        </div>
+        {% with reply.replies.all as nested_replies %}
+            {% include 'network/reply.html' with replies=nested_replies %}
+        {% endwith %}
+    </div>
+{% endfor %}

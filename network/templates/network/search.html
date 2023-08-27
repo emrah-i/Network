@@ -1,0 +1,31 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div id="search_bar">
+        <form id="search_form" class="form-inline my-2 my-lg-0">
+            <div id="sort_input">
+                <label>Sort By:</label>
+                <select id="search_sort">
+                    <option selected value="rel">Relavance</option>
+                    <option value="new_old">Newest to Oldest</option>
+                    <option value="old_new">Oldest to Newest</option>
+                    <option value="most_likes">Most Likes</option>
+                    <option value="least_likes">Least Likes</option>
+                    <option value="most_comments">Most Comments</option>
+                    <option value="least_comments">Least Comments</option>
+                </select>
+            </div><br>
+            <input required type="text" placeholder="Search" name="query" id="search_query">
+            <button class="btn" type="button" id="search_form_submit">Search</button>
+        </form>
+    </div>
+    <div class="container-fluid" id="search_results">
+        <div id="search_posts_heading">
+        </div>        
+        <div class="container-fluid all_posts search_posts">
+        </div>
+    </div>
+    <div id="load_more" style="display:none;">
+        <button class="btn" id="load_more_button">Load More</button>
+    </div>
+{% endblock %}

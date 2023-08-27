@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}SoNet{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>        <script src="https://kit.fontawesome.com/4e2b3cb87e.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,600&display=swap" rel="stylesheet">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <link rel="icon" href="{% static 'network/icon.png' %}">
+        <script src="{% static 'network/script.js' %}"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-custom" id="nav_item" aria-label="Fifth navbar example">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">SoNet <i class="fa-solid fa-share-nodes" style="color: #ffffff;"></i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" data-username="{{ user.username }}" id="layout_user_tag">{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'following' %}">Following</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'categories' %}">Catergories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'search_page' %}">Search</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <button class="btn" id="dropdown_button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Settings
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu_list">
+                                <li>
+                                    <div class="form-check form-switch">
+                                        <label class="form-check-label">Dark Mode</label>
+                                        <input class="form-check-input" type="checkbox" role="switch" id="dark_mode">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div> 
+            </div> 
+          </nav>
+        
+        <main>
+            {% block body %}
+            {% endblock %}
+            <div class="popup">
+                <p id="popup_text"></p>
+            </div>
+            <div class="modal">
+                <p id="modal_text"></p>
+                <div class="modal-btns">
+                    <button class="btn" id="cancel_modal">No</button>
+                    <button class="btn" id="confirm_modal">Yes</button>
+                </div>
+            </div>
+            <div class="loading">
+                <img src="{% static 'network/spinner.svg' %}" alt="Loading...">
+            </div>
+        </main>
+    </body>
+</html>
