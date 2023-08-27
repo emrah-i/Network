@@ -73,11 +73,11 @@ WSGI_APPLICATION = 'project4.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(default = os.environ.get("DATABASE_URL"))
 }
 
 CACHES = {
-    'default': dj_database_url.parse(os.environ.get("REDIS_URL"))
+    'default': dj_database_url.config(default = os.environ.get("REDIS_URL"))
 }
 
 AUTH_USER_MODEL = "network.User"
