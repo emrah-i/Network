@@ -80,7 +80,7 @@ DATABASES = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': dj_database_url.config(default=os.environ.get("REDIS_URL")),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
