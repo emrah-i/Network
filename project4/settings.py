@@ -14,7 +14,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['network.applikuapp.com', '0.0.0.0']
+ALLOWED_HOSTS = [env("ALLOWED_HOSTS")]
 
 # Application definition
 
