@@ -5,7 +5,7 @@
     <div id="edit_profile">
         <div id="ep_info">
         <label for="img">Current Profile Picture:</label><br>
-        <img src="{% get_media_prefix %}{{ avatar }}" alt="Current Picture" width="250" height="250" id="current_image">
+        <img src='{{ "/static/network/media"|add:avatar.url }}' alt="Current Picture" width="250" height="250" id="current_image">
         <br/>
         <label for="img">New Profile Picture (1:1):</label><br>
         <img src="" width="250" height="250" alt="New Picture" id="uploaded_image">
