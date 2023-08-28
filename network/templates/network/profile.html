@@ -70,7 +70,7 @@
     <div class="container-fluid" id="profile_posts">
         <div class="row" id="user_info">
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 col-6">
-                <!-- <img src="{% static user_info.avatar %}" alt="My Image"></img> -->
+                <img src='{% get_media_prefix %}{{ user_info.avatar }}' alt="My Image"></img>
             </div>
             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 col-6">
                 <div>

@@ -249,6 +249,9 @@ body #dropdown_button:focus {
   text-align: right;
   padding: 0;
 }
+#main_filters .col:first-child {
+  padding: 0;
+}
 #main_filters h3 {
   font-size: 1.5em;
   display: inline;
@@ -661,6 +664,9 @@ body #dropdown_button:focus {
 #edit_profile label {
   margin-top: 0.5rem;
 }
+#edit_profile input {
+  width: 90%;
+}
 #edit_profile textarea {
   width: 90%;
   padding: 0.5rem;
@@ -669,18 +675,16 @@ body #dropdown_button:focus {
 #edit_profile .btn {
   margin-bottom: 1rem;
 }
-#edit_profile #uploaded_image, #edit_profile #current_image {
-  max-width: 100%;
-  max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+#edit_profile #uploaded_image {
+  display: none;
 }
-#edit_profile #image_container_new, #edit_profile #image_container_cur {
-  width: 250px;
-  height: 250px;
-  position: relative;
-  overflow: hidden;
-  background-color: white;
+#edit_profile #uploaded_image, #edit_profile #current_image {
+  margin: 0.5rem 0;
+  border-radius: 5rem;
+  border: 0.25rem solid rgba(0, 0, 0, 0.1254901961);
+  background-color: transparent;
+  height: 8rem;
+  width: auto;
 }
 
 #search_bar {
@@ -714,6 +718,13 @@ body #dropdown_button:focus {
 #timestamp {
   margin: 0px;
   color: white;
+}
+
+#no_posts {
+  font-size: 1.5rem;
+  background-color: var(--main-color);
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
 }
 
 .popup, .loading, .modal {

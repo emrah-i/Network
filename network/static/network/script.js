@@ -396,7 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname === "/edit_profile") {
         const imageInput = document.querySelector('#image_input');
         const uploadedImage = document.querySelector('#uploaded_image');
-        const imageContainer = document.querySelector('#image_container_new');
 
         imageInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
@@ -405,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const reader = new FileReader();
 
                 reader.addEventListener('load', (event) => {
-                    imageContainer.style.display = 'block';
+                    uploadedImage.style.display = 'block';
                     uploadedImage.src = event.target.result;
                 });
 
@@ -498,7 +497,15 @@ async function load_posts(value, sort, button) {
 
     loading.style.display = 'none'
 
-    if (data.length === 0 && button === 'next') {
+    if (data.length === 0 && value === 0 ) {
+        const no_posts = document.createElement('div')
+        no_posts.className = 'col-12'
+        no_posts.id = 'no_posts'
+        no_posts.innerHTML = 'No Posts'
+        all_posts.appendChild(no_posts)
+        return;
+    }
+    else if (data.length === 0 && button === 'next') {
         post_counter = value - 10
         load_posts(post_counter, sort);
         show_popup("No more posts");
@@ -532,7 +539,11 @@ async function load_following_posts(start, sort) {
     loading.style.display = 'none'
 
     if (data.length === 0 && start === 0) {
-        show_popup("No posts");
+        const no_posts = document.createElement('div')
+        no_posts.className = 'col-12'
+        no_posts.id = 'no_posts'
+        no_posts.innerHTML = 'No Posts'
+        main_div.appendChild(no_posts)
         return;
     }
 
@@ -587,7 +598,11 @@ async function load_profile_posts(start, username, sort) {
 
     if (data.length === 0 && start === 0) {
         load.style.display = 'none';
-        show_popup("No posts");
+        const no_posts = document.createElement('div')
+        no_posts.className = 'col-12'
+        no_posts.id = 'no_posts'
+        no_posts.innerHTML = 'No Posts'
+        main_div.appendChild(no_posts)
         return;
     }
 
