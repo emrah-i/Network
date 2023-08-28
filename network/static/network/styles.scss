@@ -1039,6 +1039,11 @@ body {
             width: 80%;
         }
     }
+    #edit_profile {
+        #ep_info {
+            width: 75%;
+        }
+    }
     .modal {
         .modal-btns {
             padding: 1rem 1.5rem;
@@ -1083,6 +1088,12 @@ body {
     }
     #following_users #table {
         width: 75%;
+    }
+    #edit_profile {
+
+        #ep_info {
+            width: 95%;
+        }
     }
     .modal-btns {
         padding: 1rem 0rem !important;
