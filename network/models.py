@@ -31,7 +31,7 @@ CATEGORY_CHOICES = [
 class User(AbstractUser):
     id = models.AutoField(primary_key=True)
     username = models.CharField(unique=True, max_length=26)
-    avatar = models.ImageField(upload_to='images', default='/images/default.jpeg', unique=False)
+    avatar = models.ImageField(upload_to='images', default='images/default.jpeg', unique=False)
     bio = models.CharField(max_length=350, default='Welcome to my account!')
     datetime_joined = models.DateTimeField(default=timezone.now)
 
