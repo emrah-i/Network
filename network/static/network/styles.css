@@ -97,6 +97,7 @@ body textarea {
   margin: 1rem 5%;
 }
 body input, body textarea, body select {
+  color: black;
   border: 0.2rem solid rgba(0, 0, 0, 0.0941176471);
   margin: 0.5rem auto;
   border-radius: 1rem;
