@@ -14,7 +14,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['network.applikuapp.com']
+ALLOWED_HOSTS = ['network.applikuapp.com', '0.0.0.0']
 
 # Application definition
 
@@ -56,12 +56,6 @@ TEMPLATES = [
         },
     },
 ]
-
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
 
 WSGI_APPLICATION = 'project4.wsgi.application'
 
@@ -134,5 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'network/static/network/images')
