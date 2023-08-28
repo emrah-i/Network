@@ -3,7 +3,7 @@ import environ
 import os
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-env = environ.Env(DEBUG=False)
+env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -17,7 +17,7 @@ DEBUG = False
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS')
+    ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS')
 
 # Application definition
 
