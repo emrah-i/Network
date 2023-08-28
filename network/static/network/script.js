@@ -570,7 +570,11 @@ async function load_category_posts(category, start, sort) {
 
     if (data.length === 0 && start === 0) {
         load.style.display = 'none';
-        show_popup("No posts");
+        const no_posts = document.createElement('div')
+        no_posts.className = 'col-12'
+        no_posts.id = 'no_posts'
+        no_posts.innerHTML = 'No Posts'
+        main_div.appendChild(no_posts)
         return;
     }
 
