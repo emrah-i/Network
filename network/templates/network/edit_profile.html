@@ -4,14 +4,14 @@
 {% block body %}
     <div id="edit_profile">
         <div id="ep_info">
-            <label for="img">Current Profile Picture:</label><br>
+            <!-- <label for="img">Current Profile Picture:</label><br>
             <img src='{{ "/static/network/media"|add:avatar.url }}' alt="Current Picture" width="250" height="250" id="current_image">
             <br/>
             <label for="img">New Profile Picture (1:1):</label><br>
-            <img src="" width="250" height="250" alt="New Picture" id="uploaded_image">
+            <img src="" width="250" height="250" alt="New Picture" id="uploaded_image"> -->
             <form action="/edit_profile" method="post" enctype="multipart/form-data"> 
                 {% csrf_token %}
-                <input type="file" name="avatar" accept="image/*" id="image_input"><br>
+                <!-- <input type="file" name="avatar" accept="image/*" id="image_input"><br> -->
                 <label for="bio">Bio:</label><br>
                 <textarea name="bio" maxlength="350" required>{{ bio }}</textarea>
                 <br>

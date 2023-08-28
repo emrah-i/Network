@@ -77,7 +77,11 @@ def register(request):
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
-        if password != confirmation:
+        if len(password) < 6:
+            return render(request, "network/register.html", {
+                "message": "Passwords must be at least 6 characters."
+            })
+        elif password != confirmation:
             return render(request, "network/register.html", {
                 "message": "Passwords must match."
             })
@@ -349,7 +353,6 @@ def profile(request, username):
     
     user = User.objects.get(username=username)
     sort = request.GET.get('sort')
-    print(request.GET.get('start'))
     start =int(0 or request.GET.get('start'))
     end = start + 9
 

@@ -283,7 +283,7 @@ body #dropdown_button:focus {
 #new_post {
   background-color: var(--main-color);
   box-shadow: var(--shadow);
-  padding: 2rem;
+  padding: 2rem 1rem;
   margin: 1rem auto;
   border-radius: 1rem;
   width: 100%;
@@ -555,8 +555,8 @@ body #dropdown_button:focus {
   display: none;
 }
 
-#cancel_reply, #cancel_edit {
-  color: rgba(231, 76, 60, 0.6274509804) !important;
+#cancel_reply, #cancel_edit, #cancel {
+  color: #E74C3C !important;
 }
 
 #delete_comment, #delete_edit, #cancel_modal {
