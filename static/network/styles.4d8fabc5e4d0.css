@@ -97,7 +97,6 @@ body textarea {
   margin: 1rem 5%;
 }
 body input, body textarea, body select {
-  color: black;
   border: 0.2rem solid rgba(0, 0, 0, 0.0941176471);
   margin: 0.5rem auto;
   border-radius: 1rem;
@@ -131,7 +130,6 @@ body #dropdown_button {
 }
 body #dropdown_button:hover {
   cursor: pointer;
-  margin: 0;
   background-color: none;
 }
 body #dropdown_button:focus {
@@ -285,7 +283,7 @@ body #dropdown_button:focus {
 #new_post {
   background-color: var(--main-color);
   box-shadow: var(--shadow);
-  padding: 2rem 1rem;
+  padding: 2rem;
   margin: 1rem auto;
   border-radius: 1rem;
   width: 100%;
@@ -557,8 +555,8 @@ body #dropdown_button:focus {
   display: none;
 }
 
-#cancel_reply, #cancel_edit, #cancel {
-  color: #E74C3C !important;
+#cancel_reply, #cancel_edit {
+  color: rgba(231, 76, 60, 0.6274509804) !important;
 }
 
 #delete_comment, #delete_edit, #cancel_modal {
@@ -748,9 +746,6 @@ body #dropdown_button:focus {
 }
 
 .popup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
@@ -899,9 +894,6 @@ body #dropdown_button:focus {
   #following_users_popup dialog, #followers_user_popup dialog {
     width: 80%;
   }
-  #edit_profile #ep_info {
-    width: 75%;
-  }
   .modal .modal-btns {
     padding: 1rem 1.5rem;
   }
@@ -940,13 +932,10 @@ body #dropdown_button:focus {
   #following_users #table {
     width: 75%;
   }
-  #edit_profile #ep_info {
-    width: 95%;
-  }
   .modal-btns {
     padding: 1rem 0rem !important;
   }
   .modal-btns > * {
     font-size: 1.2rem;
   }
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.4d8fabc5e4d0.css.map */

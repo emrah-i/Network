@@ -131,7 +131,6 @@ body #dropdown_button {
 }
 body #dropdown_button:hover {
   cursor: pointer;
-  margin: 0;
   background-color: none;
 }
 body #dropdown_button:focus {
@@ -949,4 +948,4 @@ body #dropdown_button:focus {
   .modal-btns > * {
     font-size: 1.2rem;
   }
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.8ad66570aac1.css.map */
