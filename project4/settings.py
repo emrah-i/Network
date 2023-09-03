@@ -68,10 +68,6 @@ DATABASES = {
     'default': env.db("DATABASE_URL")
 }
 
-# CACHES = {
-#     'default': env.db("REDIS_URL")
-# }
-
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 DATABASES["default"]["CONN_MAX_AGE"] = 60
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
