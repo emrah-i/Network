@@ -29,9 +29,29 @@ Eventually, it evolved into it's own unique app.</p>
 <p>To ensure the frontend's responsiveness and a polished appearance, I decided to utilize the <b>Bootstrap</b> framework. This choice allowed me to create layouts that adapt seamlessly to different screen sizes and maintain a professional and refined look. By combining <b>JavaScript, HTML, SASS, CSS,</b> and <b>Bootstrap</b>, I successfully crafted a frontend that met the project's requirements and provided me with valuable experience in these essential web development technologies.</p>
 
 <h3>Back End:</h3>
-<p></p>
+<p>The backend was constructed with the following array of technologies and tools: <b>Python, Django, SQLite, and PostGreSQL.</b> The language of choice for the back end was <b>Python</b> due to it's extensive libraries and it's straightforward syntax. This decision laid the foundation for our backend development journey. </p>
+
+<p>After committing to <b>Python</b>, the next crucial choice was between two robust web frameworks: <b>Flask and Django.</b> Given the scalability requirements inherent to a social media application, I opted for <b>Django</b>, a choice that allowed us to delve into the intricate world of Django models, settings, URLs, and functions. This strategic selection paved the way for a more streamlined and feature-rich backend system.</p>
 
 <h3>Installation and Deployment:</h3>
-<p></p>
+<p>If you would like to take this project and copy it for personal use, you can following the following guide:
+    <ol>
+        <li>Fork the project</li>
+        <li>Go to the requirements.txt file and pip install all of those requirements</li>
+        <li>Create a '.env' file in the root directory
+            <ul>
+                <li>Create a variable titled "DATABASE_URL" with the database that you would like to link to the app</li>
+                <li>Create a variable titled "DJANGO_SECRET_KEY" with your secret key</li>
+                <li>If you're going to deploy the app, create a variable titled "DJANGO_ALLOWED_HOSTS" with the allowed domains you would like to deploy to</li>
+            </ul>
+        </li>
+        <li>Go to settings.py and change "DEBUG" to "True"</li>
+        <li>Run the command "python3 manage.py makemigrations"</li>
+        <li>Run the command "python3 manage.py migrate" to migrate the Django models to the database</li>
+        <li>If you would like to make changes to the SASS file, you can download "Live SASS Compiler" for VSCode to automatically convert SASS changes to CSS</li>
+        <li>Run "python3 manage.py runserver" to start the server</li>
+    </ol>
+The project contains all of the proper files for it to be deployed on Heroku. It only requires you switch "DEBUG" in settings.py to "False" before creating a heroku app and deploying the forked repository.
+</p>
 
 
