@@ -15,7 +15,7 @@
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <input type="hidden" value="DemoUser" name="username"/>
-            <input type="hidden" value="1234" name="password"/>
+            <input type="hidden" value="123456" name="password"/>
             <button class="btn" type="submit">Login as Demo User</button>
         </form><br>
         <p>Don't have an account? <a href="{% url 'register' %}">Register here.</a></p>
