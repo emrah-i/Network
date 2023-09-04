@@ -805,8 +805,8 @@ function load_new_post(event) {
             <input required type="text" name="title" id="title_input" placeholder="Enter Title" name="title"><br>
             <textarea required placeholder="Text" name="text" id="text_input"></textarea><br>
             <select required name="category" id="category_input">
-                <option selected disabled>Select Category</option>
-                ${CATEGORY_CHOICES.map(choice => `<option value=${choice.code}>${choice.display}</option>`).join('')}
+                <option value="general" selected>General Discussion</option>
+                ${CATEGORY_CHOICES.map(choice => {if (choice.code != 'general') {`<option value=${choice.code}>${choice.display}</option>`}}).join('')}
             </select>
             <br>
             <div id="new_post_buttons">
