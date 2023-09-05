@@ -152,7 +152,11 @@ def search(request, query):
             if comment.user not in unique_users:
                 unique_users.append(comment.user)
 
-        post["like_count"] = len(likes)     
+        if len(likes) == 1 and likes[0]['likes'] == None:
+            post["like_count"] = 0  
+        else:
+            post["like_count"] = len(likes)     
+
         post["comment_count"] = len(comments)
         post["unique_users"] = len(unique_users)
         posts.append(post)
@@ -230,7 +234,11 @@ def posts(request):
                 if comment.user not in unique_users:
                     unique_users.append(comment.user)
 
-            post["like_count"] = len(likes)     
+            if len(likes) == 1 and likes[0]['likes'] == None:
+                post["like_count"] = 0  
+            else:
+                post["like_count"] = len(likes)   
+
             post["comment_count"] = len(comments)
             post["unique_users"] = len(unique_users)
             posts.append(post)
@@ -287,7 +295,6 @@ def post(request, post_id):
                 liked = True
 
         unique_users = []
-        print(post)
         comments_count = Comment.objects.filter(post=post_id)
         likes = Post.objects.filter(post=post_id).values('likes')
 
@@ -295,7 +302,11 @@ def post(request, post_id):
             if comment.user not in unique_users:
                 unique_users.append(comment.user)
 
-        likes = len(likes)     
+        if len(likes) == 1 and likes[0]['likes'] == None:
+            likes = 0    
+        else:
+            likes = len(likes)
+   
         comment_count = len(comments)
         unique_users = len(unique_users)
         
@@ -406,7 +417,11 @@ def profile(request, username):
             if comment.user not in unique_users:
                 unique_users.append(comment.user)
 
-        post["like_count"] = len(likes)     
+        if len(likes) == 1 and likes[0]['likes'] == None:
+            post["like_count"] = 0  
+        else:
+            post["like_count"] = len(likes)   
+
         post["comment_count"] = len(comments)
         post["unique_users"] = len(unique_users)
         posts.append(post)
@@ -508,7 +523,11 @@ def following_posts(request, start, sort):
             if comment.user not in unique_users:
                 unique_users.append(comment.user)
 
-        post["like_count"] = len(likes)     
+        if len(likes) == 1 and likes[0]['likes'] == None:
+            post["like_count"] = 0  
+        else:
+            post["like_count"] = len(likes)   
+
         post["comment_count"] = len(comments)
         post["unique_users"] = len(unique_users)
         posts.append(post)
@@ -726,7 +745,11 @@ def category_posts(request, category, start, sort):
             if comment.user not in unique_users:
                 unique_users.append(comment.user)
 
-        post["like_count"] = len(likes)     
+        if len(likes) == 1 and likes[0]['likes'] == None:
+            post["like_count"] = 0  
+        else:
+            post["like_count"] = len(likes)      
+
         post["comment_count"] = len(comments)
         post["unique_users"] = len(unique_users)
         posts.append(post)
