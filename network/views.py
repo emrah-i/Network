@@ -271,7 +271,7 @@ def post(request, post_id):
         return HttpResponseRedirect(reverse('post', args=(post_id, )))
 
     else:
-        post = Post.objects.filter(pk=post_id).annotate(like_count=Count('likes'), comment_count=Count('comment_post')).values('post', 'title', 'text','user', 'user__username', 'like_count', 'comment_count', 'upload_time', 'category', 'likes__username')
+        post = Post.objects.filter(pk=post_id).values('post', 'title', 'likes__username', 'text','user', 'user__username',  'upload_time', 'category')
         comment_post = Post.objects.get(pk=post_id)
         comments = Comment.objects.filter(post=comment_post, parent_node=None).order_by('upload_time')
         level = 40 
@@ -285,6 +285,19 @@ def post(request, post_id):
         for item in post:
             if user.username == item['likes__username']:
                 liked = True
+
+        unique_users = []
+        print(post)
+        comments_count = Comment.objects.filter(post=post_id)
+        likes = Post.objects.filter(post=post_id).values('likes')
+
+        for comment in comments_count:
+            if comment.user not in unique_users:
+                unique_users.append(comment.user)
+
+        likes = len(likes)     
+        comment_count = len(comments)
+        unique_users = len(unique_users)
         
         post = {
             'id': post[0]['post'],
@@ -293,10 +306,11 @@ def post(request, post_id):
             'user': post[0]['user'],
             'username': post[0]['user__username'],
             'liked': liked,
-            'likes': post[0]['like_count'],
-            'comments': post[0]['comment_count'],
+            'likes': likes,
+            'comments': comment_count,
             'category': category,
-            'upload_time': post[0]['upload_time'],
+            'unique_users': unique_users,
+            'upload_time': post[0]['upload_time']
         }
 
         return render(request, "network/post.html", {
@@ -737,6 +751,7 @@ def category_posts(request, category, start, sort):
         data.append(post)
     
     return JsonResponse(list(data), safe=False)
+
 
 def auth(request):
 
