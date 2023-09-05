@@ -437,10 +437,6 @@ body #dropdown_button:focus {
 #profile_posts #user_info > * {
   margin-bottom: 1rem;
 }
-#profile_posts #profile-shadow {
-  border-radius: 1rem;
-  box-shadow: var(--shadow);
-}
 #profile_posts #main_filters {
   border-radius: 1rem 1rem 0 0;
 }
@@ -953,4 +949,4 @@ body #dropdown_button:focus {
   .modal-btns > * {
     font-size: 1.2rem;
   }
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.79052dcc8b49.css.map */

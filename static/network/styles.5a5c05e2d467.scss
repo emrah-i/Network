@@ -473,7 +473,7 @@ body {
 }
 
 #profile_posts {
-    box-shadow: none;
+    box-shadow: var(--shadow);
     overflow: visible;
 
     img {
@@ -500,11 +500,6 @@ body {
         > * {
             margin-bottom: 1rem;
         }
-    }
-
-    #profile-shadow {
-        border-radius: 1rem;
-        box-shadow: var(--shadow);
     }
 
     #main_filters {

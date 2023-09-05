@@ -437,8 +437,7 @@ body #dropdown_button:focus {
 #profile_posts #user_info > * {
   margin-bottom: 1rem;
 }
-#profile_posts #profile-shadow {
-  border-radius: 1rem;
+#profile_posts .profile-shadow {
   box-shadow: var(--shadow);
 }
 #profile_posts #main_filters {

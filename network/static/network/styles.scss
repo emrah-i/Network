@@ -502,6 +502,11 @@ body {
         }
     }
 
+    #profile-shadow {
+        border-radius: 1rem;
+        box-shadow: var(--shadow);
+    }
+
     #main_filters {
         border-radius: 1rem 1rem 0 0;
     }
