@@ -1,6 +1,8 @@
 {% extends "network/layout.html" %}
 {% load static %}
 
+{% block title %}{{ user_info.username }}'s Profile{% endblock %}
+
 {% block body %}
     <div id="dialog_backdrop"></div>
     <div id="following_users_popup" style="display:none">

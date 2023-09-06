@@ -716,8 +716,8 @@ body {
     }
 
     #comment_count {
-        margin-top: .5rem;
-        font-size: 1.4rem;
+        margin-top: 3rem;
+        margin-bottom: 0;
     }
 
     .post_comment_body {
@@ -735,10 +735,6 @@ body {
     }
 
     .post_comments {
-        margin-top: 2.5rem;
-    }
-
-    .post_comments:nth-child(2) {
         margin-top: 1rem;
     }
 
