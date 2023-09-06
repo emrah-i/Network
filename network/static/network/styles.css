@@ -238,6 +238,12 @@ body #dropdown_button:focus {
 .all_posts p, .all_posts h3 {
   margin: 0;
 }
+.all_posts .anon-likes {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
 
 #main_filters {
   align-items: center;
@@ -739,7 +745,7 @@ body #dropdown_button:focus {
   align-items: center;
   position: fixed;
   z-index: 1000;
-  background-color: rgba(240, 178, 122, 0.937254902);
+  background-color: rgba(226, 98, 98, 0.937254902);
   box-shadow: var(--shadow);
   width: -moz-fit-content;
   width: fit-content;
@@ -752,7 +758,6 @@ body #dropdown_button:focus {
 }
 
 .popup {
-  display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;

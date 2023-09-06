@@ -772,6 +772,12 @@ async function load_items(mainDiv, data) {
                 buttonsBlock.appendChild(editButton);
             }
         }
+        else {
+            const like_c = document.createElement('p')
+            like_c.className = 'anon-likes'
+            like_c.innerHTML = like_count + " Likes"
+            buttonsBlock.insertBefore(like_c, buttonsBlock.firstChild)
+        }
 
         mainDiv.appendChild(postDiv)
 
@@ -1159,7 +1165,7 @@ function show_popup(phrase){
     const text = popup.querySelector('#popup_text')
 
     text.innerText = phrase
-    popup.style.display = 'block'
+    popup.style.display = 'flex'
 
     setTimeout(()=>{
         popup.style.opacity = 1
