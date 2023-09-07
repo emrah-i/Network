@@ -1,6 +1,5 @@
-# Network
-
-<a href="https://network.applikuapp.com">network.applikuapp.com</a>
+<h1 align="center">Network</h1>
+<h3 align="center"><a href="https://network.applikuapp.com">network.applikuapp.com</a></h3>
 
 <br/>
 
